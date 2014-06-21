@@ -53,7 +53,6 @@ public class Sword extends Item {
   @Override
   public void equip(Player player) {
     super.equip(player);
-    System.out.println(model.getChildren());
     model.setLocalScale(3);
     model.rotate(equipRotation.x, equipRotation.y, equipRotation.z);
     }

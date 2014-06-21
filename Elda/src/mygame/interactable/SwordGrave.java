@@ -42,6 +42,10 @@ public class SwordGrave extends Interactable{
     if (swordQuest.step.equals("Done")){
       swordQuest.gui.showAlert(getName(), "This grave has been dug up...");
       }
+
+    if (swordQuest.step.equals("hasSword")){
+      swordQuest.gui.showAlert(getName(), "This grave has been dug up...");
+      }
     
     else if (player.equippedItem !=null) {
         
@@ -52,10 +56,10 @@ public class SwordGrave extends Interactable{
         swordModel.setName("Sword");
         swordModel.scale(3);
         stateManager.getState(SceneManager.class).makeUnshaded(swordModel);
-        swordQuest.gui.updateInventory();
         Item sword = new Sword(swordModel);
         player.inventory.add(sword);
-        swordQuest.step = "Done";
+        swordQuest.gui.updateInventory();
+        swordQuest.step = "hasSword";
         
         }
       

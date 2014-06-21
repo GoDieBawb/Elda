@@ -14,6 +14,7 @@ import com.jme3.scene.Node;
 import mygame.player.Player;
 import mygame.player.PlayerManager;
 import mygame.quests.BarryQuest;
+import mygame.quests.FrankieQuest;
 import mygame.quests.GaryQuest;
 import mygame.quests.JerryQuest;
 import mygame.quests.LarryQuest;
@@ -49,7 +50,7 @@ public class NpcManager extends AbstractAppState {
    initStartingTown();
    
    else if (scene.getName().equals("Road"))
-   System.out.println("Its a road");    
+   initRoad();    
    
    else if (scene.getName().equals("TestScene"))
    initTester();
@@ -99,8 +100,38 @@ public class NpcManager extends AbstractAppState {
         }
         
       }
+    
     npcNodeCleaner(targQuan);
       
+    }
+  
+  private void initRoad(){
+    
+    int targQuan = npcNode.getQuantity();  
+    
+    for (int i = 0; i < npcNode.getQuantity(); i++) {
+        
+      Node currentNpc = (Node) npcNode.getChild(i);
+      
+      try {
+          
+        Npc testNpc = (Npc) currentNpc;
+          
+        }
+      
+      catch(ClassCastException e) {
+        
+        if (currentNpc.getName().equals("Frank")) {
+          Quest frankQuest = new FrankieQuest(stateManager);
+          Npc   frank      = new Npc(frankQuest, stateManager, currentNpc);
+          npcNode.attachChild(frank);
+          }
+          
+        }
+      }
+   
+    npcNodeCleaner(targQuan);
+    
     }
   
   private void npcNodeCleaner(int targQuan) {

@@ -16,7 +16,6 @@ import mygame.scene.SceneManager;
  */
 public class LarryQuest extends Quest {
   
-  private boolean unlocked;
     
   public LarryQuest(AppStateManager stateManager){
     super(stateManager);
@@ -34,16 +33,16 @@ public class LarryQuest extends Quest {
       player.questList.add(swordQuest);
       }
     
-    if(unlocked){
+    if(swordQuest.step.equals("Done")){
       gui.showAlert(npc.getName(), "Be careful... The road is a dangerous place");
       }
     
-    else if (swordQuest.step.equals("Done")) {
+    else if (swordQuest.step.equals("hasSword")) {
       gui.showAlert(npc.getName(), "Is that... a sword?! Looks like I can let you through");
       Door startGate = (Door) ((Node) stateManager.getState(SceneManager.class).scene.getChild("InteractableNode")).getChild("StartGate");
       startGate.locked = false;
       startGate.message  = "Gate to the road: " + startGate.locked;
-      unlocked = true;
+      swordQuest.step = "Done";
       }
     
     else {

@@ -62,6 +62,7 @@ public class SceneManager extends AbstractAppState {
   public void initScene(String scenePath, Vector3f startSpot){
 
     rootNode.detachChild(scene);
+    physics.getPhysicsSpace().removeAll(scene);
     
 
     player.phys.warp(startSpot);

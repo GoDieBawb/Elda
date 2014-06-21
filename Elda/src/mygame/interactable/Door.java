@@ -43,9 +43,17 @@ public class Door extends Interactable {
     
     else if (name.equalsIgnoreCase("StartGate")) {
       scenePath     = "Scenes/Road.j3o";
-      startSpot     = new Vector3f(0,0,0);
+      startSpot     = new Vector3f(-50,0,-50);
       locked        = true;
-      door.message  = "Gate to the road: " + locked;
+      door.message  = "Gate to the road Locked: " + locked;
+      setName(name);
+      }
+
+    else if (name.equalsIgnoreCase("StartingTown")) {
+      scenePath     = "Scenes/StartTown.j3o";
+      startSpot     = new Vector3f(-45,0,-45);
+      locked        = false;
+      door.message  = "Gate to Starting Town";
       setName(name);
       }
     

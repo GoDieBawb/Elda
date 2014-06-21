@@ -24,6 +24,15 @@ public class Goblin extends Monster {
     attackCooldown = 5;
     damage         = 5;
     health         = 10;
+    
+    if (model.getUserData("questGoblin")) {
+      System.out.println("Quest Goblin");
+      setName("QuestGoblin");
+      
+      } else {
+      System.out.println("Not Goblin");
+      }
+    
     } 
   
   @Override

@@ -40,7 +40,9 @@ public class InteractableManager extends AbstractAppState {
       
     interactableNode = (Node) scene.getChild("InteractableNode");
     
-    for (int i = 0; i < interactableNode.getQuantity(); i++) {
+    int targInt = interactableNode.getChildren().size();
+    
+    for (int i = 0; i < interactableNode.getChildren().size(); i++) {
     
       Node currentInteractable = (Node) interactableNode.getChild(i);
       
@@ -53,10 +55,9 @@ public class InteractableManager extends AbstractAppState {
       catch (ClassCastException e) {
         
         if (currentInteractable.getName().equalsIgnoreCase("Door")) {
-          System.out.println("creating dor");
+          System.out.println("creating door");
           Interactable door = new Door(currentInteractable, stateManager);
           interactableNode.attachChild(door);
-
           }
         
         else if (currentInteractable.getName().equalsIgnoreCase("SwordGrave")) {
@@ -68,11 +69,11 @@ public class InteractableManager extends AbstractAppState {
       
       }
     
-    interactNodeClean();
+    interactNodeClean(targInt);
     
     }
   
-  private void interactNodeClean() {
+  private void interactNodeClean(int targInt) {
       
     for (int i = 0; i < interactableNode.getQuantity(); i++) {
         
@@ -89,7 +90,13 @@ public class InteractableManager extends AbstractAppState {
         
       }
     
-      System.out.println(interactableNode.getChildren());
+    
+    for (int i = 0; i < interactableNode.getQuantity(); i++) {
+      Interactable bla = (Interactable) interactableNode.getChild(i);
+      bla.attachChild(bla.model);
+      }
+    
+    
       
     }
   
