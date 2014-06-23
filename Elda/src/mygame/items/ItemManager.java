@@ -113,11 +113,6 @@ public class ItemManager extends AbstractAppState {
     
     if (itemNode.getQuantity() != targetInt){
       itemNodeClean(targetInt);
-      System.out.println("Recleaning Item Node");
-      }
-    
-    else {
-      System.out.println("Exiting item cleaner");
       }
         
     }
@@ -137,6 +132,7 @@ public class ItemManager extends AbstractAppState {
       //If the current message box isn't the name of the item send it
       if (!gui.getAlertTitle().equals(hitItem.getName())){
         gui.showAlert(hitItem.getName(), "This is a " + hitItem.getName() + ". Interact to pick it up");
+        gui.interactButton.setText("Grab");
         }
       
       //Checks if the player wants to pick up the hit item

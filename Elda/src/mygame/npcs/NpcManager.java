@@ -14,6 +14,8 @@ import com.jme3.scene.Node;
 import mygame.player.Player;
 import mygame.player.PlayerManager;
 import mygame.quests.BarryQuest;
+import mygame.quests.CowQuest;
+import mygame.quests.FarmerQuest;
 import mygame.quests.FrankieQuest;
 import mygame.quests.GaryQuest;
 import mygame.quests.JerryQuest;
@@ -46,11 +48,16 @@ public class NpcManager extends AbstractAppState {
   public void initNpcs(Node scene){
    npcNode = (Node) scene.getChild("NpcNode");
    
+    System.out.println("Initializing scene: " + scene.getName());
+   
    if(scene.getName().equals("StartTown"))
    initStartingTown();
    
    else if (scene.getName().equals("Road"))
-   initRoad();    
+   initRoad();
+   
+   else if (scene.getName().equals("MissionDairy"))
+   initDairy();
    
    else if (scene.getName().equals("TestScene"))
    initTester();
@@ -59,7 +66,6 @@ public class NpcManager extends AbstractAppState {
   
   private void initStartingTown(){
     
-    int targQuan = npcNode.getQuantity();  
     
     for (int i = 0; i < npcNode.getQuantity(); i++) {
         
@@ -101,13 +107,11 @@ public class NpcManager extends AbstractAppState {
         
       }
     
-    npcNodeCleaner(targQuan);
+    npcNodeCleaner();
       
     }
   
   private void initRoad(){
-    
-    int targQuan = npcNode.getQuantity();  
     
     for (int i = 0; i < npcNode.getQuantity(); i++) {
         
@@ -130,11 +134,45 @@ public class NpcManager extends AbstractAppState {
         }
       }
    
-    npcNodeCleaner(targQuan);
+    npcNodeCleaner();
     
     }
   
-  private void npcNodeCleaner(int targQuan) {
+  private void initDairy() {
+      
+    for (int i = 0; i < npcNode.getQuantity(); i++) {
+        
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+        
+        if (currentNpc.getName().equals("Farmer")) {
+          Quest farmerQuest = new FarmerQuest(stateManager);
+          Npc   farmer      = new Npc(farmerQuest, stateManager, currentNpc);
+          npcNode.attachChild(farmer);
+          }
+        
+        else if (currentNpc.getName().equals("Cow")) {
+          Quest cowQuest = new CowQuest(stateManager);
+          Npc   cow      = new Npc(cowQuest, stateManager, currentNpc);
+          npcNode.attachChild(cow);
+          }
+          
+        }
+      
+      }
+    
+    npcNodeCleaner();
+      
+    }
+  
+  private void npcNodeCleaner() {
       
     for (int i = 0; i < npcNode.getQuantity(); i++) {
       
@@ -148,14 +186,17 @@ public class NpcManager extends AbstractAppState {
       
       catch(ClassCastException e) {
         
-        //currentNpc.removeFromParent();
+        currentNpc.removeFromParent();
         
         }
         
       }
     
-    if (npcNode.getQuantity() != targQuan) {
-      npcNodeCleaner(targQuan);
+    for (int i = 0; i < npcNode.getQuantity(); i++) {
+      
+      Npc currentNpc = (Npc) npcNode.getChild(i);
+      currentNpc.attachChild(currentNpc.model);
+        
       }
       
     }

@@ -24,6 +24,7 @@ public class Sword extends Item {
     damage = 5;
     range  = 1;
     equipRotation = new Vector3f(0, -90, 0);
+    actionName = "Attack";
     }
   
   //Because this is a sword it acts like a sword and swings

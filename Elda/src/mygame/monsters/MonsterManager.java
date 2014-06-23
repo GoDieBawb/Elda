@@ -90,7 +90,7 @@ public class MonsterManager extends AbstractAppState {
     }
   
   //Removes nodes and leaves only monsters
-  private void monsterNodeClean(){
+  public void monsterNodeClean(){
    
     //Iterates over the monster node  
     for (int i = 0; i < monsterNode.getQuantity(); i++) {

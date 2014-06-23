@@ -19,7 +19,7 @@ public class Spider extends Monster {
     super(monster, stateManager);
     setName("Spider");
     animChannel.setAnim("Walk_2");
-    sightRange     = 5;
+    sightRange     = 10;
     attackRange    = 1;
     attackCooldown = 1;
     damage         = 3;

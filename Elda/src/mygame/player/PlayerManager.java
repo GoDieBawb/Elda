@@ -12,6 +12,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.control.BetterCharacterControl;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import mygame.quests.QuestList;
 
@@ -65,10 +66,13 @@ public class PlayerManager extends AbstractAppState {
     player.addControl(player.phys);
     physics.getPhysicsSpace().add(player.phys);
     
+    player.phys.setGravity(new Vector3f(0, -50, 0));
+    
     player.scale(.3f);
     this.app.getRootNode().attachChild(player);
     
     }
+    
   
   @Override
   public void update(float tpf){
@@ -83,4 +87,4 @@ public class PlayerManager extends AbstractAppState {
 
     }
   
-}
+  }

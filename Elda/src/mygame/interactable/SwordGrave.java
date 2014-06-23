@@ -23,7 +23,8 @@ public class SwordGrave extends Interactable{
   public SwordGrave(Node interactable){
     super(interactable);
     setName("Grave");
-    message = "The inscription shows a warrior";
+    message    = "The inscription shows a warrior";
+    actionName = "Check";
     }
   
   @Override

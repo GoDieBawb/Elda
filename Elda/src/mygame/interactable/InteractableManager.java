@@ -115,6 +115,7 @@ public class InteractableManager extends AbstractAppState {
       //If the current message box isn't the name of the item send it
       if (!gui.getAlertTitle().equals(hitInteractable.getName())){
         gui.showAlert(hitInteractable.getName(), hitInteractable.message);
+        gui.interactButton.setText(hitInteractable.actionName);
         
         }
       

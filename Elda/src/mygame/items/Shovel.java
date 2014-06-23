@@ -16,6 +16,7 @@ public class Shovel extends Item {
     
   public Shovel(Node item){
     super(item);
+    actionName = "Dig";
     }
     
   @Override

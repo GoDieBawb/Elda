@@ -30,23 +30,36 @@ public class Npc extends Node {
   public AnimChannel legChannel;
   
   public Npc(Quest quest, AppStateManager stateManager, Node npc) {
-    System.out.println(npc);
     this.quest  = quest;
     this.phys   = new BetterCharacterControl(.3f, .5f, 100f);
     setName(npc.getName());
     model       = npc;
-    animControl = model.getChild("Person").getControl(AnimControl.class);
     this.model.addControl(this.phys);
     stateManager.getState(PlayerManager.class).physics.getPhysicsSpace().add(this.phys);
-    
-    armChannel = animControl.createChannel();
-    legChannel = animControl.createChannel();
-    armChannel.addFromRootBone("TopSpine");
-    legChannel.addFromRootBone("BottomSpine");
-    
-    armChannel.setAnim("ArmIdle");
-    legChannel.setAnim("LegsIdle");
+    initAnimations();
     quest.npc = this;
+    }
+  
+  private void initAnimations(){
+    
+    if (name.equals("Cow")) {
+      animControl = model.getControl(AnimControl.class);
+      armChannel  = animControl.createChannel();
+      armChannel.addAllBones();
+      armChannel.setAnim("EatLow");
+      }
+    
+    else {
+      animControl = model.getChild("Person").getControl(AnimControl.class);
+      armChannel = animControl.createChannel();
+      legChannel = animControl.createChannel();
+      armChannel.addFromRootBone("TopSpine");
+      legChannel.addFromRootBone("BottomSpine");
+    
+      armChannel.setAnim("ArmIdle");
+      legChannel.setAnim("LegsIdle");
+      }
+      
     }
 
   public void swing(AppStateManager stateManager){
@@ -66,7 +79,11 @@ public class Npc extends Node {
     }
   
   public void idle(){
-    if (!armChannel.getAnimationName().equals("ArmIdle")){
+    
+    if (name.equals("Cow")) {
+      
+      }
+    else if (!armChannel.getAnimationName().equals("ArmIdle")){
       armChannel.setAnim("ArmIdle");
       }  
     }

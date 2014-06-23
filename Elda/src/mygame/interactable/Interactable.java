@@ -15,6 +15,7 @@ public abstract class Interactable extends Node {
   
   public Node   model;
   public String message;
+  public String actionName;
   
   public Interactable(Node interactable){
     

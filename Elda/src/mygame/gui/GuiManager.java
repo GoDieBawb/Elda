@@ -46,7 +46,7 @@ public class GuiManager extends AbstractAppState {
   private boolean           invAttached;
   private Joystick          stick;
   private Player            player;
-  private ButtonAdapter     interactButton;
+  public  ButtonAdapter     interactButton;
   private String            delayedMessage;
   private String            delayedTitle;
   private int               alertDelay;
@@ -78,53 +78,6 @@ public class GuiManager extends AbstractAppState {
     initInventoryButton();
     initInventoryWindow();
     //initJoyStick();
-    }
-  
-  private void initInventoryButton(){
-    invButton = new ButtonAdapter( screen, "invButton", new Vector2f(15, 15) ) {
-    
-    @Override
-      public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
-        showInventory();
-        }
-      };
-    
-    invButton.setDimensions(screen.getWidth()/8, screen.getHeight()/10);
-    invButton.setPosition(0, 0);
-    //invButton.setFont("Interface/Fonts/Impact.fnt");
-    invButton.setText("Inventory");
-    screen.addElement(invButton);
-    }
-  
-  private void initInventoryWindow(){
-    invMenu = new ScrollPanel(screen, Vector2f.ZERO, new Vector2f(150,300));
-    FlowLayout layout = new FlowLayout(screen, "margins 0 0 0 0","pad 0 0 0 0");
-    invMenu.getScrollableArea().setLayout(layout);
-    invMenu.setText("Inventory");
-    screen.addElement(invMenu);
-    invMenu.hide();
-    }
-  
-  private void showInventory(){
-    
-    if (invAttached){
-      invMenu.hide();
-      invAttached = false;
-      }
-    
-    else {
-        
-      invAttached = true;
-      invMenu.show();
-      
-      updateInventory();
-      
-      }
-    
-    invMenu.getScrollableArea().layoutChildren();
-    invMenu.reshape();
-    invMenu.setPosition(0, screen.getHeight()/2 - invMenu.getHeight()/2);
-    
     }
   
   private void initInteractButton(){
@@ -195,6 +148,7 @@ public class GuiManager extends AbstractAppState {
     alert.setWindowTitle(speaker);
     alert.setMsg(text);
     alertTitle = speaker;
+    alert.setPosition(0,0);
     }
   
   public String getAlertTitle(){
@@ -267,6 +221,49 @@ public class GuiManager extends AbstractAppState {
     healthInd.setCurrentValue(player.health);
     }
   
+  private void initInventoryButton(){
+    invButton = new ButtonAdapter( screen, "invButton", new Vector2f(15, 15) ) {
+    
+    @Override
+      public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
+        showInventory();
+        }
+      };
+    
+    invButton.setDimensions(screen.getWidth()/8, screen.getHeight()/10);
+    invButton.setPosition(0, 0);
+    //invButton.setFont("Interface/Fonts/Impact.fnt");
+    invButton.setText("Inventory");
+    screen.addElement(invButton);
+    }
+  
+  private void initInventoryWindow(){
+    invMenu = new ScrollPanel(screen, Vector2f.ZERO, new Vector2f(150,300));
+    FlowLayout layout = new FlowLayout(screen, "margins 0 0 0 0","pad 0 0 0 0");
+    invMenu.getScrollableArea().setLayout(layout);
+    invMenu.setText("Inventory");
+    screen.addElement(invMenu);
+    invMenu.hide();
+    }
+  
+  private void showInventory(){
+    
+    if (invAttached){
+      invMenu.hide();
+      invAttached = false;
+      }
+    
+    else {
+        
+      invAttached = true;
+      invMenu.show();
+      
+      updateInventory();
+      
+      }
+    
+    }
+  
   public void updateInventory() {
     if (invAttached) {
 
@@ -280,7 +277,7 @@ public class GuiManager extends AbstractAppState {
       for (int i = 0; i < player.inventory.size(); i++) {
        
         String a                      = "Button Number " + String.valueOf(i);
-        final Item          currentItem     = (Item) player.inventory.get(i);     
+        final Item      currentItem   = (Item) player.inventory.get(i);     
         InventoryButton currentButton = new InventoryButton(screen, a ,new Vector2f(12,12)) {
           
           @Override
@@ -288,10 +285,12 @@ public class GuiManager extends AbstractAppState {
             
             if (player.equippedItem == currentItem) {
               item.unequip(player);
+              interactButton.setText("Check");
               }
             
             else {
               item.equip(player);
+              interactButton.setText(item.actionName);
               }
             
             updateInventory();
@@ -314,7 +313,7 @@ public class GuiManager extends AbstractAppState {
       
     invMenu.getScrollableArea().layoutChildren();
     invMenu.reshape();
-    invMenu.setPosition(0, screen.getHeight()/2 - invMenu.getHeight()/2);
+    invMenu.setPosition(0, screen.getHeight()- (invMenu.getHeight() + invButton.getHeight())/**screen.getHeight()/2 - invMenu.getHeight()/2**/);
       
       } 
       

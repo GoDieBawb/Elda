@@ -21,6 +21,7 @@ public class Food extends Item {
   public Food(Node item) {
     super(item);
     assignSpecs(this);
+    actionName = "Eat";
     }
   
   private void assignSpecs(Item item){

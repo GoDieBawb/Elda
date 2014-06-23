@@ -41,7 +41,7 @@ public class LarryQuest extends Quest {
       gui.showAlert(npc.getName(), "Is that... a sword?! Looks like I can let you through");
       Door startGate = (Door) ((Node) stateManager.getState(SceneManager.class).scene.getChild("InteractableNode")).getChild("StartGate");
       startGate.locked = false;
-      startGate.message  = "Gate to the road: " + startGate.locked;
+      startGate.message  = "Gate to the road locked: " + startGate.locked;
       swordQuest.step = "Done";
       }
     

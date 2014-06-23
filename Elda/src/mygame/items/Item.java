@@ -22,6 +22,7 @@ public abstract class Item extends Node {
   public int       range;
   public Vector3f  equipRotation;
   public Vector3f  equipOffset;
+  public String    actionName;
   
   public Item (Node item) {
     model = item;

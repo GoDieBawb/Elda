@@ -27,17 +27,17 @@ public class Door extends Interactable {
     sceneManager = stateManager.getState(SceneManager.class);
     gui          = stateManager.getState(GuiManager.class);
     setName(String.valueOf(interactable.getUserData("Name")));
-    assignScene(this);
+    actionName   = "Open";
+    assignScene();
     }
   
-  private void assignScene(Door door) {
+  private void assignScene() {
     
-      
     if (name.equalsIgnoreCase("TestDoor")){
       scenePath     = "Scenes/TestScene.j3o";
       startSpot     = new Vector3f(0,0,0);
       locked        = true;
-      door.message  = "Door to Bobs test scene locked: " + locked;
+      message       = "Door to Bobs test scene locked: " + locked;
       setName(name);
       }
     
@@ -45,7 +45,7 @@ public class Door extends Interactable {
       scenePath     = "Scenes/Road.j3o";
       startSpot     = new Vector3f(-50,0,-50);
       locked        = true;
-      door.message  = "Gate to the road Locked: " + locked;
+      message       = "Gate to the road Locked: " + locked;
       setName(name);
       }
 
@@ -53,7 +53,23 @@ public class Door extends Interactable {
       scenePath     = "Scenes/StartTown.j3o";
       startSpot     = new Vector3f(-45,0,-45);
       locked        = false;
-      door.message  = "Gate to Starting Town";
+      message       = "Gate to Starting Town";
+      setName(name);
+      }
+    
+    else if (name.equalsIgnoreCase("MissionDairy")) {
+      scenePath     = "Scenes/MissionDairy.j3o";
+      startSpot     = new Vector3f(55,0,-35);
+      locked        = false;
+      message       = "Gate to Mission Dairy";
+      setName(name);
+      }
+    
+    else if (name.equalsIgnoreCase("DairyGate")) {
+      scenePath     = "Scenes/Road.j3o";  
+      startSpot     = new Vector3f(-10, 0 ,-50);
+      locked        = false;
+      message       = "Gate to Road";
       setName(name);
       }
     
