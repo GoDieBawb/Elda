@@ -28,10 +28,10 @@ public class Door extends Interactable {
     gui          = stateManager.getState(GuiManager.class);
     setName(String.valueOf(interactable.getUserData("Name")));
     actionName   = "Open";
-    assignScene();
+    assignScene(stateManager);
     }
   
-  private void assignScene() {
+  private void assignScene(AppStateManager stateManager) {
     
     if (name.equalsIgnoreCase("TestDoor")){
       scenePath     = "Scenes/TestScene.j3o";
@@ -50,7 +50,7 @@ public class Door extends Interactable {
       }
 
     else if (name.equalsIgnoreCase("StartingTown")) {
-      scenePath     = "Scenes/StartTown.j3o";
+      scenePath     = "Scenes/StartingTown.j3o";
       startSpot     = new Vector3f(-45,0,-45);
       locked        = false;
       message       = "Gate to Starting Town";
@@ -68,6 +68,38 @@ public class Door extends Interactable {
     else if (name.equalsIgnoreCase("DairyGate")) {
       scenePath     = "Scenes/Road.j3o";  
       startSpot     = new Vector3f(-10, 0 ,-50);
+      locked        = false;
+      message       = "Gate to Road";
+      setName(name);
+      }
+
+    else if (name.equalsIgnoreCase("AbuDesert")) {
+      scenePath     = "Scenes/AbuDesert.j3o";  
+      startSpot     = new Vector3f(-12, 0 ,-25);
+      locked        = false;
+      message       = "Gate to Abu Desert";
+      setName(name);
+      }
+
+    else if (name.equalsIgnoreCase("DesertGate")) {
+      scenePath     = "Scenes/Road.j3o";  
+      startSpot     = new Vector3f(-52, 3 ,6);
+      locked        = false;
+      message       = "Gate to Road";
+      setName(name);
+      }
+    
+    else if (name.equalsIgnoreCase("LostForest")) {
+      scenePath     = "Scenes/LostForest.j3o";  
+      startSpot     = new Vector3f(-39, 0 ,-55);
+      locked        = false;
+      message       = "Gate to Lost Forest";
+      setName(name);
+      }
+
+    else if (name.equalsIgnoreCase("ForestGate")) {
+      scenePath     = "Scenes/Road.j3o";  
+      startSpot     = new Vector3f(-52, 3 ,52);
       locked        = false;
       message       = "Gate to Road";
       setName(name);

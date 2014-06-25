@@ -201,7 +201,7 @@ public class GuiManager extends AbstractAppState {
         };
     
       // getGUIRegion returns region info “x=0|y=0|w=50|h=50″, etc
-      TextureKey key = new TextureKey("Textures/barrel/D.png", false);
+      TextureKey key = new TextureKey("Textures/barrel.png", false);
       Texture tex = assetManager.loadTexture(key);
       stick.setTextureAtlasImage(tex, "x=20|y=20|w=120|h=35");
       stick.getThumb().setTextureAtlasImage(tex, "x=20|y=20|w=120|h=35");

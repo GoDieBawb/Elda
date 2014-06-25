@@ -35,6 +35,8 @@ public class LarryQuest extends Quest {
     
     if(swordQuest.step.equals("Done")){
       gui.showAlert(npc.getName(), "Be careful... The road is a dangerous place");
+      Door startGate   = (Door) ((Node) stateManager.getState(SceneManager.class).scene.getChild("InteractableNode")).getChild("StartGate");
+      startGate.locked = false;
       }
     
     else if (swordQuest.step.equals("hasSword")) {

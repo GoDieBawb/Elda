@@ -27,7 +27,6 @@ public class FrankieQuest extends Quest {
     
     Quest frankieQuest  = player.questList.getQuest(name);
     Monster questGoblin = (Monster) ((Node) npc.getParent().getParent().getChild("MonsterNode")).getChild("QuestGoblin");
-    System.out.println(step);
     
     if (frankieQuest ==  null) {
       step = "Start";

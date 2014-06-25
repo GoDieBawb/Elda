@@ -6,6 +6,7 @@ package mygame.items;
 
 import com.jme3.app.state.AppStateManager;
 import com.jme3.collision.CollisionResults;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import mygame.monsters.Monster;
@@ -55,6 +56,7 @@ public class Sword extends Item {
   public void equip(Player player) {
     super.equip(player);
     model.setLocalScale(3);
+    model.setLocalRotation(new Quaternion(1,1,1,1));
     model.rotate(equipRotation.x, equipRotation.y, equipRotation.z);
     }
 
