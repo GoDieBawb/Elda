@@ -55,9 +55,13 @@ public class InteractableManager extends AbstractAppState {
       catch (ClassCastException e) {
         
         if (currentInteractable.getName().equalsIgnoreCase("Door")) {
-          System.out.println("creating door");
           Interactable door = new Door(currentInteractable, stateManager);
           interactableNode.attachChild(door);
+          }
+        
+        else if (currentInteractable.getName().equalsIgnoreCase("Well")) {
+          Interactable well = new Well(currentInteractable);
+          interactableNode.attachChild(well);
           }
         
         else if (currentInteractable.getName().equalsIgnoreCase("SwordGrave")) {

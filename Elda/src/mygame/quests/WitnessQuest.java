@@ -10,15 +10,15 @@ import com.jme3.app.state.AppStateManager;
  *
  * @author Bob
  */
-public class GuardQuest extends Quest {
-    
-  public GuardQuest(AppStateManager stateManager){
+public class WitnessQuest extends Quest {
+  
+  public WitnessQuest(AppStateManager stateManager) {
     super(stateManager);
     }
   
   @Override
-  public void act(){
-      
+  public void act() {
+    
     Quest eldaQuest = player.questList.getQuest("EldaQuest");
     
     if (eldaQuest ==  null) {
@@ -30,22 +30,18 @@ public class GuardQuest extends Quest {
     String step = eldaQuest.step;
     
     if (step.equals("Start")) {
-      gui.showAlert(npc.getName(), "No one is allowed inside the Castle. Princess Elda has gone missing!");    
+      gui.showAlert(npc.getName(), "I saw Zeldar kidnappoing Princess Elda! Someone should tell the guard!");
+      eldaQuest.step = "ZeldarMissing";
       }
     
     else if (step.equals("ZeldarMissing")) {
-      gui.showAlert(npc.getName(), "Zeldar was seen kidnapping Princess Elda? Go inform the king!");  
-      eldaQuest.step = "MeetKing";
-      }
-
-    else if (step.equals("MeetKing")) {
-      gui.showAlert(npc.getName(), "You must inform the king immediately!");    
+      gui.showAlert(npc.getName(), "Tell the guard that Zeldar has taken Princess Elda!");
       }
     
     else {
-      gui.showAlert(npc.getName(), "Please save Princess Elda!");  
+      gui.showAlert(npc.getName(), "Please save Princess Elda!");
       }
       
     }
     
-}
+  }

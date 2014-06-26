@@ -75,6 +75,13 @@ public class ItemManager extends AbstractAppState {
           
           }
         
+        else if (currentItem.getName().equals("Bucket")) {
+        
+          Item bucket = new Bucket(currentItem);
+          itemNode.attachChild(bucket);
+            
+          }
+        
         else if (currentItem.getName().equals("Shovel")){
           Item shovel = new Shovel(currentItem);
           itemNode.attachChild(shovel);

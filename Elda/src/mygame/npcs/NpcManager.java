@@ -20,10 +20,13 @@ import mygame.quests.CowQuest;
 import mygame.quests.FarmerQuest;
 import mygame.quests.FrankieQuest;
 import mygame.quests.GaryQuest;
+import mygame.quests.InvestigatorQuest;
 import mygame.quests.JerryQuest;
+import mygame.quests.KingQuest;
 import mygame.quests.LarryQuest;
 import mygame.quests.Quest;
 import mygame.quests.TestQuest;
+import mygame.quests.WitnessQuest;
 
 /**
  *
@@ -69,6 +72,12 @@ public class NpcManager extends AbstractAppState {
    
    else if (scene.getName().equals("HayFarm"))
    initHayFarm();
+   
+   else if (scene.getName().equals("CastleInterior"))
+   initCastleInterior();   
+   
+   else if (scene.getName().equals("City"))
+   initCity();    
    
    else if (scene.getName().equals("TestScene"))
    initTester();
@@ -236,6 +245,62 @@ public class NpcManager extends AbstractAppState {
       }
     
     npcNodeCleaner();    
+      
+    }
+  
+  private void initCastleInterior(){
+    
+    for (int i = 0; i < npcNode.getQuantity(); i++) {  
+      
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+          
+        if (currentNpc.getName().equals("King")) {
+          Quest kingQuest = new KingQuest(stateManager);
+          Npc   king      = new Npc(kingQuest, stateManager, currentNpc);
+          npcNode.attachChild(king);
+          }
+        
+        else if (currentNpc.getName().equals("Investigator")) {
+          Quest investigatorQuest = new InvestigatorQuest(stateManager);
+          Npc   investigator      = new Npc(investigatorQuest, stateManager, currentNpc);
+          npcNode.attachChild(investigator);
+          }  
+          
+        }  
+      }
+    npcNodeCleaner();
+    }
+  
+  private void initCity() {
+
+    for (int i = 0; i < npcNode.getQuantity(); i++) {  
+      
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+          
+        if (currentNpc.getName().equals("Witness")) {
+          Quest witnessQuest = new WitnessQuest(stateManager);
+          Npc   witness      = new Npc(witnessQuest, stateManager, currentNpc);
+          npcNode.attachChild(witness);
+          }
+        }  
+      }
+    npcNodeCleaner();  
       
     }
   

@@ -31,6 +31,7 @@ public class Player extends Node {
   public float       speedMult;
   public boolean     itemCheck;
   public boolean     interactCheck;
+  public boolean     hayPerm;
   public Inventory   inventory;
   public Item        equippedItem;
   public Node        hand;

@@ -6,7 +6,9 @@ package mygame.quests;
 
 import com.jme3.app.state.AppStateManager;
 import com.jme3.scene.Node;
+import mygame.gui.GuiManager;
 import mygame.interactable.Door;
+import mygame.items.Bucket;
 
 /**
  *
@@ -34,7 +36,7 @@ public class CowQuest extends Quest {
       gui.showAlert(npc.getName(), "Moo");
       }
     
-    if (farmerQuest.step.equals("HelpCow")) {
+    else if (farmerQuest.step.equals("HelpCow")) {
      
      Node monsterNode = (Node) npc.getParent().getParent().getChild("MonsterNode");
         
@@ -52,6 +54,27 @@ public class CowQuest extends Quest {
         
       }
     
+    else if (farmerQuest.step.equals("Done")) {
+      
+      if (player.equippedItem.getName().equals("Bucket")) {
+          
+        Bucket bucket = (Bucket) player.equippedItem;
+        
+        if (bucket.contents.equalsIgnoreCase("Empty")) {
+            
+          gui.showAlert("Cow", "You fill your bucket with milk");
+          player.hayPerm = true;
+          
+          } else {
+          gui.showAlert("Cow", "Your bucket is already full of " + bucket.contents);  
+          }         
+        
+          
+        } else {
+        gui.showAlert("Cow", "Moo");  
+        }
+        
+      }
     
     else {
       gui.showAlert(npc.getName(), "Moo");

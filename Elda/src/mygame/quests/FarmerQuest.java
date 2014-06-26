@@ -40,7 +40,7 @@ public class FarmerQuest extends Quest {
       gui.delayAlert(npc.getName(), "Something is bothering my cow... Bring you sword and go check it out", 2);
       
       for (int i = 0; i < 3; i++) {
-        Node    spiderModel = (Node) stateManager.getApplication().getAssetManager().loadModel("Models/spider.j3o");
+        Node    spiderModel = (Node) stateManager.getApplication().getAssetManager().loadModel("Models/Creatures/spider.j3o");
         Monster spider      = new Spider(spiderModel, stateManager);
         spiderModel.scale(.3f);
         spider.attachChild(spiderModel);

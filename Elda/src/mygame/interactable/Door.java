@@ -159,7 +159,9 @@ public class Door extends Interactable {
       }
 
     else if (name.equalsIgnoreCase("CastleDoor")) {
+      scenePath     = "Scenes/CastleInterior.j3o";
       message       = "Door to castle's interior";
+      startSpot     = new Vector3f(-4, 1 , 29);
       }
 
     else if (name.equalsIgnoreCase("CourtYard")) {
