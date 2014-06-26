@@ -104,6 +104,69 @@ public class Door extends Interactable {
       message       = "Gate to Road";
       setName(name);
       }
+
+    else if (name.equalsIgnoreCase("HayFarm")) {
+      scenePath     = "HayFarm/Road.j3o";
+      message       = "Gate to Road";
+      startSpot     = new Vector3f(-25, 1 ,51);
+      }
+
+    else if (name.equalsIgnoreCase("FarmGate")) {
+      scenePath     = "Scenes/Road.j3o";
+      message       = "Gate to Hay Farm";
+      startSpot     = new Vector3f(-25, 1 , -2);
+      }
+
+    else if (name.equalsIgnoreCase("ZeldarsCave")) {
+      scenePath     = "Scenes/Cave.j3o";
+      message       = "Door to Zeldar's Cave";
+      startSpot     = new Vector3f(-34, 1 ,50);
+      }
+
+    else if (name.equalsIgnoreCase("CaveDoor")) {
+      scenePath     = "Scenes/Road.j3o";
+      message       = "Gate to Road";
+      startSpot     = new Vector3f(-45, 3 , 57);
+      }
+
+    else if (name.equalsIgnoreCase("Castle")) {
+      scenePath     = "Scenes/City.j3o";
+      message       = "Gate to City";
+      startSpot     = new Vector3f(-1, 3 , 21);
+      }
+
+    else if (name.equalsIgnoreCase("CastleGate")) {
+      scenePath     = "Scenes/Road.j3o";
+      message       = "Gate to Road";
+      startSpot     = new Vector3f(51, 3 , 53);
+      }
+    
+    else if (name.equalsIgnoreCase("EldasCastle")) {
+      scenePath     = "Scenes/EldasCastle.j3o";
+      message       = "Gate to Elda's Castle";
+      startSpot     = new Vector3f(-2, 3 , 25);
+      }
+
+    else if (name.equalsIgnoreCase("EldasGate")) {
+      scenePath     = "Scenes/City.j3o";
+      message       = "Gate to City";
+      startSpot     = new Vector3f(-3, 1 , -25);
+      }
+
+    else if (name.equalsIgnoreCase("GuardGate")) {
+      locked        = true;
+      message       = "This gate looks well guarded";
+      }
+
+    else if (name.equalsIgnoreCase("CastleDoor")) {
+      message       = "Door to castle's interior";
+      }
+
+    else if (name.equalsIgnoreCase("CourtYard")) {
+      scenePath     = "Scenes/EldasCastle.j3o";
+      message       = "Door to Castle Courtyard";
+      startSpot     = new Vector3f(-3, 1 , 11);
+      }
     
     else {
       scenePath = null;
