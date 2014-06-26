@@ -59,7 +59,7 @@ public class Door extends Interactable {
     
     else if (name.equalsIgnoreCase("MissionDairy")) {
       scenePath     = "Scenes/MissionDairy.j3o";
-      startSpot     = new Vector3f(55,0,-35);
+      startSpot     = new Vector3f(55, 2 ,-35);
       locked        = false;
       message       = "Gate to Mission Dairy";
       setName(name);
@@ -67,7 +67,7 @@ public class Door extends Interactable {
     
     else if (name.equalsIgnoreCase("DairyGate")) {
       scenePath     = "Scenes/Road.j3o";  
-      startSpot     = new Vector3f(-10, 0 ,-50);
+      startSpot     = new Vector3f(-10, 2 ,-50);
       locked        = false;
       message       = "Gate to Road";
       setName(name);
@@ -75,7 +75,7 @@ public class Door extends Interactable {
 
     else if (name.equalsIgnoreCase("AbuDesert")) {
       scenePath     = "Scenes/AbuDesert.j3o";  
-      startSpot     = new Vector3f(-12, 0 ,-25);
+      startSpot     = new Vector3f(-12, 2 ,-25);
       locked        = false;
       message       = "Gate to Abu Desert";
       setName(name);
@@ -91,7 +91,7 @@ public class Door extends Interactable {
     
     else if (name.equalsIgnoreCase("LostForest")) {
       scenePath     = "Scenes/LostForest.j3o";  
-      startSpot     = new Vector3f(-39, 0 ,-55);
+      startSpot     = new Vector3f(-21, 3 , 55);
       locked        = false;
       message       = "Gate to Lost Forest";
       setName(name);
@@ -106,15 +106,15 @@ public class Door extends Interactable {
       }
 
     else if (name.equalsIgnoreCase("HayFarm")) {
-      scenePath     = "HayFarm/Road.j3o";
-      message       = "Gate to Road";
-      startSpot     = new Vector3f(-25, 1 ,51);
+      scenePath     = "Scenes/HayFarm.j3o";
+      message       = "Gate to Hay Farm";
+      startSpot     = new Vector3f(-26, 3 , -3);
       }
 
     else if (name.equalsIgnoreCase("FarmGate")) {
       scenePath     = "Scenes/Road.j3o";
       message       = "Gate to Hay Farm";
-      startSpot     = new Vector3f(-25, 1 , -2);
+      startSpot     = new Vector3f(-25, 1 , 51);
       }
 
     else if (name.equalsIgnoreCase("ZeldarsCave")) {
@@ -125,8 +125,8 @@ public class Door extends Interactable {
 
     else if (name.equalsIgnoreCase("CaveDoor")) {
       scenePath     = "Scenes/Road.j3o";
-      message       = "Gate to Road";
-      startSpot     = new Vector3f(-45, 3 , 57);
+      message       = "Door to Road";
+      startSpot     = new Vector3f(45, 2 , 58);
       }
 
     else if (name.equalsIgnoreCase("Castle")) {
@@ -138,7 +138,7 @@ public class Door extends Interactable {
     else if (name.equalsIgnoreCase("CastleGate")) {
       scenePath     = "Scenes/Road.j3o";
       message       = "Gate to Road";
-      startSpot     = new Vector3f(51, 3 , 53);
+      startSpot     = new Vector3f(51, 3 , -53);
       }
     
     else if (name.equalsIgnoreCase("EldasCastle")) {

@@ -14,6 +14,8 @@ import com.jme3.scene.Node;
 import mygame.player.Player;
 import mygame.player.PlayerManager;
 import mygame.quests.BarryQuest;
+import mygame.quests.BillyBobQuest;
+import mygame.quests.BlackSmithQuest;
 import mygame.quests.CowQuest;
 import mygame.quests.FarmerQuest;
 import mygame.quests.FrankieQuest;
@@ -58,6 +60,15 @@ public class NpcManager extends AbstractAppState {
    
    else if (scene.getName().equals("MissionDairy"))
    initDairy();
+   
+   else if (scene.getName().equals("LostForest"))
+   initForest();
+   
+   else if (scene.getName().equals("EldasCastle"))
+   initEldasCastle();
+   
+   else if (scene.getName().equals("HayFarm"))
+   initHayFarm();
    
    else if (scene.getName().equals("TestScene"))
    initTester();
@@ -169,6 +180,90 @@ public class NpcManager extends AbstractAppState {
       }
     
     npcNodeCleaner();
+      
+    }
+  
+  private void initForest(){
+
+    for (int i = 0; i < npcNode.getQuantity(); i++) {
+        
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+          
+        if (currentNpc.getName().equals("Blacksmith")) {
+          Quest blacksmithQuest = new BlackSmithQuest(stateManager);
+          Npc   farmer          = new Npc(blacksmithQuest, stateManager, currentNpc);
+          npcNode.attachChild(farmer);
+          }          
+          
+        }
+    
+      }
+    
+    npcNodeCleaner();
+      
+    }
+  
+  private void initEldasCastle() {
+      
+    for (int i = 0; i < npcNode.getQuantity(); i++) {  
+      
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+          
+        if (currentNpc.getName().equals("Guard")) {
+          Quest blacksmithQuest = new BlackSmithQuest(stateManager);
+          Npc   farmer          = new Npc(blacksmithQuest, stateManager, currentNpc);
+          npcNode.attachChild(farmer);
+          }          
+          
+        }
+      
+      }
+    
+    npcNodeCleaner();    
+      
+    }
+  
+  private void initHayFarm() {
+      
+    for (int i = 0; i < npcNode.getQuantity(); i++) {  
+      
+      Node currentNpc = (Node) npcNode.getChild(i);
+     
+      try {
+        
+        Npc testNpc = (Npc) currentNpc;
+        
+        }
+      
+      catch(ClassCastException e) {
+          
+        if (currentNpc.getName().equals("BillyBob")) {
+          Quest billyBobQuest  = new BillyBobQuest(stateManager);
+          Npc   farmer         = new Npc(billyBobQuest, stateManager, currentNpc);
+          npcNode.attachChild(farmer);
+          }          
+          
+        }
+      
+      }
+    
+    npcNodeCleaner();      
       
     }
   

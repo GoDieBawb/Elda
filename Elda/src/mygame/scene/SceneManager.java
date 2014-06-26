@@ -56,7 +56,7 @@ public class SceneManager extends AbstractAppState {
     rootNode            = this.app.getRootNode();
     scene               = new Node();
     physics             = this.stateManager.getState(PlayerManager.class).physics;
-    initScene("Scenes/Cave.j3o", new Vector3f(0,0,0));
+    initScene("Scenes/StartingTown.j3o", new Vector3f(28, 1 , -36));
     }
   
   public void initScene(String scenePath, Vector3f startSpot){

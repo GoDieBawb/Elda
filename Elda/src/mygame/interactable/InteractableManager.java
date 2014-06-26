@@ -64,6 +64,16 @@ public class InteractableManager extends AbstractAppState {
           Interactable grave = new SwordGrave(currentInteractable);
           interactableNode.attachChild(grave);
           }
+        
+        else if (currentInteractable.getName().equalsIgnoreCase("HayStack")) {
+          Interactable hayStack = new HayStack(currentInteractable);
+          interactableNode.attachChild(hayStack);
+          }
+        
+        else if (currentInteractable.getName().equalsIgnoreCase("HayField")) {
+          Interactable hayField = new HayField(currentInteractable);
+          interactableNode.attachChild(hayField);
+          }
           
         }
       
@@ -110,7 +120,19 @@ public class InteractableManager extends AbstractAppState {
     if (results.size() != 0){
       
       GuiManager gui = stateManager.getState(GuiManager.class);
-      Interactable hitInteractable = (Interactable) results.getCollision(0).getGeometry().getParent().getParent();
+      Interactable hitInteractable;
+      
+      try {
+      
+      hitInteractable = (Interactable) results.getCollision(0).getGeometry().getParent().getParent();
+      
+      }
+      
+      catch(ClassCastException e){
+      
+      hitInteractable = (Interactable) results.getCollision(0).getGeometry().getParent().getParent().getParent();    
+          
+      }
       
       //If the current message box isn't the name of the item send it
       if (!gui.getAlertTitle().equals(hitInteractable.getName())){
