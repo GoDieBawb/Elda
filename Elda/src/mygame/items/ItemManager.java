@@ -76,10 +76,8 @@ public class ItemManager extends AbstractAppState {
           }
         
         else if (currentItem.getName().equals("Bucket")) {
-        
           Item bucket = new Bucket(currentItem);
           itemNode.attachChild(bucket);
-            
           }
         
         else if (currentItem.getName().equals("Shovel")){
@@ -92,11 +90,11 @@ public class ItemManager extends AbstractAppState {
       }
     
     //Clean up the item Node
-    itemNodeClean(targetInt);
+    itemNodeClean();
     
     }
   
-  private void itemNodeClean(int targetInt){
+  private void itemNodeClean(){
     
     //Iterates over the item Node  
     for (int i = 0; i < itemNode.getQuantity(); i++){
@@ -107,19 +105,19 @@ public class ItemManager extends AbstractAppState {
       //If it is an item attach its model
       try {
         currentItem = (Item) itemNode.getChild(i);
-        currentItem.model.removeFromParent();
         currentItem.attachChild(currentItem.model);
         }
       
       //If its a node detach it from the item node and wait to be attached to its parent item
       catch (ClassCastException e) {
-        //itemNode.getChild(i).removeFromParent();
+        itemNode.getChild(i).removeFromParent();
         }
         
       }
     
-    if (itemNode.getQuantity() != targetInt){
-      itemNodeClean(targetInt);
+    for (int i = 0; i < itemNode.getQuantity(); i++) {
+      Item currentItem = (Item) itemNode.getChild(i);
+      currentItem.attachChild(currentItem.model);
       }
         
     }

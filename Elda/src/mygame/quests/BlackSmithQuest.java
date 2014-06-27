@@ -67,12 +67,12 @@ public class BlackSmithQuest extends Quest {
       }
     
     else if (step.equals("HasBluePrints")) {
-      gui.showAlert(npc.getName(), "I can't believe you found the blue prints");
-      eldaQuest.step = "HasCannon";
+      gui.showAlert(npc.getName(), "I can't believe you found the blue prints.... This is incredible apparently this requires the warrior sword!");
+      eldaQuest.step = "HasWeapon";
       }
     
-    else if (step.equals("HasCannon")) {
-      gui.showAlert(npc.getName(), "I don't want bread... I want meat");
+    else if (step.equals("HasWeapon")) {
+      gui.showAlert(npc.getName(), "With that new upgraded sword you'll be sure to defeat Zeldar!");
       }
     
     else {

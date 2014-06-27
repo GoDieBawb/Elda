@@ -47,7 +47,7 @@ public class Goblin extends Monster {
   public void idle(){
     if (!animChannel.getAnimationName().equals("idleA"))
     animChannel.setAnim("idleA");
-    };
+    }
   
   @Override
   public void run(){

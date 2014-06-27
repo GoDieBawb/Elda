@@ -9,9 +9,12 @@ import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.control.BetterCharacterControl;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
+import mygame.gui.GuiManager;
 import mygame.items.Item;
 import mygame.quests.QuestList;
+import mygame.scene.SceneManager;
 
 /**
  *
@@ -49,9 +52,12 @@ public class Player extends Node {
     equippedItem.act(stateManager);
     
     }
-  
-  public void getItemInHand(){
+
+  public void die(AppStateManager stateManager) {
     
+    health = 20;
+    stateManager.getState(SceneManager.class).initScene("Scenes/StartingTown.j3o", new Vector3f(28, 1 , -36));
+    stateManager.getState(GuiManager.class).delayAlert("Death", "You wake up in your house", 5);  
     }
 
   public void run(){

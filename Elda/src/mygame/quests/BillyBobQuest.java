@@ -23,7 +23,7 @@ public class BillyBobQuest extends Quest{
     Quest hayQuest = player.questList.getQuest("HayQuest");
     
     if (hayQuest == null) {
-      hayQuest      = new FarmerQuest(stateManager);
+      hayQuest      = new HayQuest(stateManager);
       hayQuest.step = "Start";
       player.questList.add(hayQuest);
       }
@@ -52,6 +52,8 @@ public class BillyBobQuest extends Quest{
           
           }
         
+        } else {
+        gui.showAlert(npc.getName(), "I need you to bring me some milk from the farmer");    
         }
       
       } else {

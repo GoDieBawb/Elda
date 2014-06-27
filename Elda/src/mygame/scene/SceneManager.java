@@ -57,26 +57,18 @@ public class SceneManager extends AbstractAppState {
     scene               = new Node();
     physics             = this.stateManager.getState(PlayerManager.class).physics;
     initScene("Scenes/StartingTown.j3o", new Vector3f(28, 1 , -36));
+    //initScene("Scenes/City.j3o", new Vector3f(0, 2 ,0));
     }
   
   public void initScene(String scenePath, Vector3f startSpot){
 
     rootNode.detachChild(scene);
     physics.getPhysicsSpace().removeAll(scene);
-    
 
     player.phys.warp(startSpot);
 
     scene = (Node) assetManager.loadModel(scenePath);
-    
-    RigidBodyControl phys = new RigidBodyControl(0f);
-    RigidBodyControl phys1 = new RigidBodyControl(0f);
-    
-    scene.getChild("SceneNode").addControl(phys);
-    scene.getChild("InteractableNode").addControl(phys1);
-    
-    physics.getPhysicsSpace().add(phys);
-    physics.getPhysicsSpace().add(phys1);
+    addPhys();  
     
     rootNode.attachChild(scene);
     
@@ -85,8 +77,23 @@ public class SceneManager extends AbstractAppState {
     monsterManager.initMonsters(scene);
     interactableManager.initInteractables(scene);
     
-    makeUnshaded(app.getRootNode());
+    makeUnshaded(app.getRootNode());  
     
+    }
+  
+  public void addPhys() {
+    physics.getPhysicsSpace().removeAll(scene);
+    
+    RigidBodyControl phys  = new RigidBodyControl(0f);
+    RigidBodyControl phys1 = new RigidBodyControl(0f);
+    
+    scene.getChild("SceneNode").removeControl(RigidBodyControl.class);
+    scene.getChild("InteractableNode").removeControl(RigidBodyControl.class);
+    scene.getChild("SceneNode").addControl(phys);
+    scene.getChild("InteractableNode").addControl(phys1);
+    
+    physics.getPhysicsSpace().add(phys);
+    physics.getPhysicsSpace().add(phys1);      
     }
 
   public void makeUnshaded(Node node) {

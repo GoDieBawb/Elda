@@ -44,7 +44,7 @@ public class KingQuest extends Quest {
     
     else if (step.equals("FoundPlan")) {
       gui.showAlert(npc.getName(), "So... He took her to the caves...");
-      eldaQuest.step = "FindSmtih";
+      eldaQuest.step = "FindSmith";
       }
     
     else if (step.equals("FindSmith")) {

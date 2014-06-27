@@ -78,6 +78,16 @@ public class InteractableManager extends AbstractAppState {
           Interactable hayField = new HayField(currentInteractable);
           interactableNode.attachChild(hayField);
           }
+        
+        else if (currentInteractable.getName().equals("ZeldarsTable")) {
+          Interactable zeldarsTable = new ZeldarsTable(currentInteractable);
+          interactableNode.attachChild(zeldarsTable);
+          }
+        
+        else if (currentInteractable.getName().equals("ZeldarsWall")) {
+          Interactable zeldarsWall = new ZeldarsWall(currentInteractable);
+          interactableNode.attachChild(zeldarsWall);
+          }
           
         }
       

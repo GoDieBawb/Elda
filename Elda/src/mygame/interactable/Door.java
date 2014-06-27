@@ -8,6 +8,10 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import mygame.gui.GuiManager;
+import mygame.player.Player;
+import mygame.player.PlayerManager;
+import mygame.quests.EldaQuest;
+import mygame.quests.Quest;
 import mygame.scene.SceneManager;
 
 /**
@@ -75,10 +79,17 @@ public class Door extends Interactable {
 
     else if (name.equalsIgnoreCase("AbuDesert")) {
       scenePath     = "Scenes/AbuDesert.j3o";  
-      startSpot     = new Vector3f(-12, 2 ,-25);
+      startSpot     = new Vector3f(-22, 2 ,-56);
       locked        = false;
       message       = "Gate to Abu Desert";
       setName(name);
+      }
+    
+    else if (name.equalsIgnoreCase("Ruins")) {
+      scenePath   = "Scenes/AbuDesert.j3o";
+      startSpot   = new Vector3f(22, 1, 46);
+      message     = "You can climb these to get out";
+      setName("Large Rock");
       }
 
     else if (name.equalsIgnoreCase("DesertGate")) {
@@ -128,6 +139,12 @@ public class Door extends Interactable {
       message       = "Door to Road";
       startSpot     = new Vector3f(45, 2 , 58);
       }
+    
+    else if (name.equalsIgnoreCase("ZeldarsLair")) {
+      scenePath     = "Scenes/ZeldarsLair.j3o";
+      message       = "Door to Zeldars Lair";
+      startSpot     = new Vector3f(0, 2 , 0);
+      }
 
     else if (name.equalsIgnoreCase("Castle")) {
       scenePath     = "Scenes/City.j3o";
@@ -156,12 +173,13 @@ public class Door extends Interactable {
     else if (name.equalsIgnoreCase("GuardGate")) {
       locked        = true;
       message       = "This gate looks well guarded";
+      setName(name);
       }
 
     else if (name.equalsIgnoreCase("CastleDoor")) {
       scenePath     = "Scenes/CastleInterior.j3o";
       message       = "Door to castle's interior";
-      startSpot     = new Vector3f(-4, 1 , 29);
+      startSpot     = new Vector3f(-4, 1 , 20);
       }
 
     else if (name.equalsIgnoreCase("CourtYard")) {
@@ -181,6 +199,29 @@ public class Door extends Interactable {
       
     if (locked)
     gui.showAlert(name, "This seems to be locked");
+    
+    else if (name.equals("ZeldarsLair")) {
+        
+      Player player = stateManager.getState(PlayerManager.class).player; 
+      Quest eldaQuest = player.questList.getQuest("EldaQuest");
+    
+    if (eldaQuest ==  null) {
+      eldaQuest = new EldaQuest(stateManager);
+      player.questList.add(eldaQuest);
+      eldaQuest.step = "Start";
+      }
+    
+      if (eldaQuest.step.equals("HasWeapon")) {
+        sceneManager.initScene(scenePath, startSpot); 
+        }
+    
+      else {
+        player.die(stateManager);
+        stateManager.getState(GuiManager.class).delayAlert("Death", "As you open the door Zeldar the evil wizard removes your face with a devastating attack", 1); 
+        }
+      
+    }
+      
     else
     sceneManager.initScene(scenePath, startSpot);
     }

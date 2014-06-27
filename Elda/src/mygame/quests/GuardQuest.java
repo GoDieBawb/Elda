@@ -5,6 +5,8 @@
 package mygame.quests;
 
 import com.jme3.app.state.AppStateManager;
+import com.jme3.scene.Node;
+import mygame.scene.SceneManager;
 
 /**
  *
@@ -20,6 +22,7 @@ public class GuardQuest extends Quest {
   public void act(){
       
     Quest eldaQuest = player.questList.getQuest("EldaQuest");
+    Node  guardGate = (Node) ((Node) npc.getParent().getParent().getChild("InteractableNode")).getChild("GuardGate");
     
     if (eldaQuest ==  null) {
       eldaQuest = new EldaQuest(stateManager);
@@ -36,16 +39,26 @@ public class GuardQuest extends Quest {
     else if (step.equals("ZeldarMissing")) {
       gui.showAlert(npc.getName(), "Zeldar was seen kidnapping Princess Elda? Go inform the king!");  
       eldaQuest.step = "MeetKing";
+      openGate(guardGate);
       }
 
     else if (step.equals("MeetKing")) {
-      gui.showAlert(npc.getName(), "You must inform the king immediately!");    
+      gui.showAlert(npc.getName(), "You must inform the king immediately!");
+      openGate(guardGate);
       }
     
     else {
       gui.showAlert(npc.getName(), "Please save Princess Elda!");  
+      openGate(guardGate);
       }
       
     }
+  
+  private void openGate(Node gate) {
+    if (gate != null) {
+      gate.removeFromParent();
+      stateManager.getState(SceneManager.class).addPhys();
+      }
+    }
     
-}
+  }

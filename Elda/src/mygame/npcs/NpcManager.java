@@ -20,6 +20,7 @@ import mygame.quests.CowQuest;
 import mygame.quests.FarmerQuest;
 import mygame.quests.FrankieQuest;
 import mygame.quests.GaryQuest;
+import mygame.quests.GuardQuest;
 import mygame.quests.InvestigatorQuest;
 import mygame.quests.JerryQuest;
 import mygame.quests.KingQuest;
@@ -235,9 +236,9 @@ public class NpcManager extends AbstractAppState {
       catch(ClassCastException e) {
           
         if (currentNpc.getName().equals("Guard")) {
-          Quest blacksmithQuest = new BlackSmithQuest(stateManager);
-          Npc   farmer          = new Npc(blacksmithQuest, stateManager, currentNpc);
-          npcNode.attachChild(farmer);
+          Quest guardQuest      = new GuardQuest(stateManager);
+          Npc   guard          = new Npc(guardQuest, stateManager, currentNpc);
+          npcNode.attachChild(guard);
           }          
           
         }
