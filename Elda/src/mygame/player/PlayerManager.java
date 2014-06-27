@@ -84,6 +84,9 @@ public class PlayerManager extends AbstractAppState {
         }
       
       }
+    
+    if (player.health <= 0)
+    player.die(stateManager);
 
     }
   
