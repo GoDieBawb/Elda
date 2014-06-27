@@ -88,6 +88,16 @@ public class InteractableManager extends AbstractAppState {
           Interactable zeldarsWall = new ZeldarsWall(currentInteractable);
           interactableNode.attachChild(zeldarsWall);
           }
+        
+        else if (currentInteractable.getName().equals("Rocks")) {
+          Interactable rocks = new Rocks(currentInteractable);
+          interactableNode.attachChild(rocks);
+          }
+ 
+        else if (currentInteractable.getName().equals("BlueprintTable")) {
+          Interactable blueprintTable = new Rocks(currentInteractable);
+          interactableNode.attachChild(blueprintTable);
+          }
           
         }
       

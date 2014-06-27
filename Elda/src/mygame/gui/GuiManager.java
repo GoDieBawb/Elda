@@ -77,7 +77,7 @@ public class GuiManager extends AbstractAppState {
     initHealthLevel();
     initInventoryButton();
     initInventoryWindow();
-    //initJoyStick();
+    initJoyStick();
     }
   
   private void initInteractButton(){

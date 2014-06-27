@@ -29,6 +29,7 @@ public class Rocks extends Interactable {
   public void act(AppStateManager stateManager) {
     Player player = stateManager.getState(PlayerManager.class).player;
     
+    if (player.equippedItem != null) {
     if (player.equippedItem.getName().equals("Shovel")) {
       
       if (getUserData("Special") != null) {
@@ -48,6 +49,12 @@ public class Rocks extends Interactable {
       stateManager.getState(GuiManager.class).showAlert("Rocks", "Something might be buried here...");  
       }
     
-    }
+    } 
+  
+    else {
+      stateManager.getState(GuiManager.class).showAlert("Rocks", "Something might be buried here...");  
+      }
+    
+    }  
     
   }
