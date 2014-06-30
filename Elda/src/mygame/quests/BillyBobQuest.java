@@ -44,6 +44,7 @@ public class BillyBobQuest extends Quest{
         if (bucket.contents.equalsIgnoreCase("Milk")) {
             
           gui.showAlert(npc.getName(), "That's exactly what I needed... If you need Hay just water my fields");
+          bucket.contents = "Empty";
           hayQuest.step = "Done";
           
         } else {

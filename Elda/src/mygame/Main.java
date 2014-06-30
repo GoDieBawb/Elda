@@ -25,6 +25,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
+    this.setShowSettings(false);
+    this.setDisplayFps(false);
+    this.setDisplayStatView(false);
     this.stateManager.attach(new PlayerManager());
     this.stateManager.attach(new ItemManager());
     this.stateManager.attach(new NpcManager());

@@ -31,8 +31,8 @@ public class Rocks extends Interactable {
     
     if (player.equippedItem != null) {
     if (player.equippedItem.getName().equals("Shovel")) {
-      
-      if (getUserData("Special") != null) {
+        
+      if (model.getUserData("Special") != null) {
         stateManager.getState(GuiManager.class).showAlert("Rocks", "You fall into a cave!");  
         Vector3f startSpot = new Vector3f(11, 2, -7);
         String scenePath   = "Scenes/Ruins.j3o"; 

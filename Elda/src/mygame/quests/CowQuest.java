@@ -64,10 +64,10 @@ public class CowQuest extends Quest {
             
           gui.showAlert("Cow", "You fill your bucket with milk");
           bucket.contents = "Milk";
-          player.hayPerm  = true;
           
           } else {
-          gui.showAlert("Cow", "Your bucket is already full of " + bucket.contents);  
+          gui.showAlert("Cow", "Your you empty the " + bucket.contents + "and refill with fresh milk");  
+          bucket.contents = "Milk";
           }         
         
           

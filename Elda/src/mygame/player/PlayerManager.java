@@ -85,6 +85,10 @@ public class PlayerManager extends AbstractAppState {
       
       }
     
+    if (player.getLocalTranslation().y < -5 ) {
+      player.die(stateManager);
+      }
+    
     if (player.health <= 0)
     player.die(stateManager);
 

@@ -17,6 +17,7 @@ import mygame.quests.BarryQuest;
 import mygame.quests.BillyBobQuest;
 import mygame.quests.BlackSmithQuest;
 import mygame.quests.CowQuest;
+import mygame.quests.EldaQuest;
 import mygame.quests.FarmerQuest;
 import mygame.quests.FrankieQuest;
 import mygame.quests.GaryQuest;
@@ -54,7 +55,7 @@ public class NpcManager extends AbstractAppState {
   public void initNpcs(Node scene){
    npcNode = (Node) scene.getChild("NpcNode");
    
-    System.out.println("Initializing scene: " + scene.getName());
+   System.out.println("Initializing scene: " + scene.getName());
    
    if(scene.getName().equals("StartTown"))
    initStartingTown();
@@ -78,12 +79,15 @@ public class NpcManager extends AbstractAppState {
    initCastleInterior();   
    
    else if (scene.getName().equals("City"))
-   initCity();    
+   initCity();
    
-   else if (scene.getName().equals("TestScene"))
-   initTester();
-  
-    }
+    else if (scene.getName().equals("ZeldarsLair"))
+    initLair();  
+   
+    else if (scene.getName().equals("TestScene"))
+    initTester();
+   
+     }
   
   private void initStartingTown(){
     
@@ -360,6 +364,33 @@ public class NpcManager extends AbstractAppState {
         
       }
       
+    }
+  
+    private void initLair(){
+    
+    for (int i = 0; i < npcNode.getQuantity(); i++) {
+        
+      Node currentNpc = (Node) npcNode.getChild(i);
+      
+      try {
+          
+        Npc testNpc = (Npc) currentNpc;
+          
+        }
+      
+      catch(ClassCastException e) {
+        
+        if (currentNpc.getName().equals("Elda")) {
+          Quest eldaQuest = new EldaQuest(stateManager);
+          Npc   elda      = new Npc(eldaQuest, stateManager, currentNpc);
+          npcNode.attachChild(elda);
+          }
+          
+        }
+      }
+   
+    npcNodeCleaner();
+    
     }
   
   //Inits the tester npc bob

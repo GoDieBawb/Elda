@@ -95,7 +95,7 @@ public class InteractableManager extends AbstractAppState {
           }
  
         else if (currentInteractable.getName().equals("BlueprintTable")) {
-          Interactable blueprintTable = new Rocks(currentInteractable);
+          Interactable blueprintTable = new BlueprintTable(currentInteractable);
           interactableNode.attachChild(blueprintTable);
           }
           

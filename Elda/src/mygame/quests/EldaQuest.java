@@ -19,6 +19,7 @@ public class EldaQuest extends Quest {
   
   @Override
   public void act(){
+    gui.showAlert("Eldar", "Please save me!");
     }    
     
   }

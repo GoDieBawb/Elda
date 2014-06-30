@@ -41,7 +41,8 @@ public class Well extends Interactable {
           }
         
         else {
-          stateManager.getState(GuiManager.class).showAlert("Well", "Your bucket is already full of " + bucket.contents);
+          stateManager.getState(GuiManager.class).showAlert("Well", "You empty out the " + bucket.contents + " and you fill the bucket with water.");
+          bucket.contents = "Water";
           }
         
         }

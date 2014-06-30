@@ -65,16 +65,17 @@ public class MonsterManager extends AbstractAppState {
         if (currentMonster.getName().equalsIgnoreCase("Goblin")) {
           Monster goblin = new Goblin(currentMonster, stateManager);
           monsterNode.attachChild(goblin);
-          System.out.println("Goblin Created");
           }
       
         //If its a spider make it a spider type monster
         if (currentMonster.getName().equalsIgnoreCase("Spider")) {
-            
           Monster spider = new Spider(currentMonster, stateManager);
           monsterNode.attachChild(spider);
-          System.out.println("Spider created");
-          
+          }
+        
+        if (currentMonster.getName().equalsIgnoreCase("Zeldar")) {
+          Monster zeldar = new Zeldar(currentMonster, stateManager);
+          monsterNode.attachChild(zeldar);
           }
         
         }
