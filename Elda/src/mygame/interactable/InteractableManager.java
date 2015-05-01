@@ -98,6 +98,11 @@ public class InteractableManager extends AbstractAppState {
           Interactable blueprintTable = new BlueprintTable(currentInteractable);
           interactableNode.attachChild(blueprintTable);
           }
+        
+        else {
+          System.out.println("Uh oh " + currentInteractable.getName() + " don't exist");
+          
+          }
           
         }
       
@@ -157,6 +162,7 @@ public class InteractableManager extends AbstractAppState {
       hitInteractable = (Interactable) results.getCollision(0).getGeometry().getParent().getParent().getParent();    
           
       }
+      
       
       //If the current message box isn't the name of the item send it
       if (!gui.getAlertTitle().equals(hitInteractable.getName())){

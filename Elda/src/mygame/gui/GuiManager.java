@@ -55,7 +55,7 @@ public class GuiManager extends AbstractAppState {
   private String            alertTitle;
   private Indicator         healthInd;
   private ArrayList         buttonList;
-  private GuiManager        gui;
+  private boolean           isAndroid;
   
   @Override
   public void initialize(AppStateManager stateManager, Application app){
@@ -67,7 +67,7 @@ public class GuiManager extends AbstractAppState {
     alertTitle        = "";
     screen            = new Screen(app, "tonegod/gui/style/atlasdef/style_map.gui.xml");
     buttonList        = new ArrayList();
-    gui               = this;
+    isAndroid  = "Dalvik".equals(System.getProperty("java.vm.name"));
     screen.setUseTextureAtlas(true,"tonegod/gui/style/atlasdef/atlas.png");
     screen.setUseMultiTouch(true);
     this.app.getGuiNode().addControl(screen);
@@ -77,6 +77,7 @@ public class GuiManager extends AbstractAppState {
     initHealthLevel();
     initInventoryButton();
     initInventoryWindow();
+    if (isAndroid)
     initJoyStick();
     }
   

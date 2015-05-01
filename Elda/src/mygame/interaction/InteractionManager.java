@@ -135,8 +135,12 @@ public class InteractionManager extends AbstractAppState implements ActionListen
         if (!up && !down) {
             player.idle();
         }
-        
-       player.phys.setWalkDirection(walkDirection.mult(1));
+       
+       boolean isAndroid  = "Dalvik".equals(System.getProperty("java.vm.name")); 
+       if (!isAndroid)
+       player.speedMult = 1;
+       
+       player.phys.setWalkDirection(walkDirection.mult(player.speedMult));
        player.phys.setViewDirection(camDir);
 
     }

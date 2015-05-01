@@ -19,7 +19,10 @@ import mygame.quests.Quest;
 public class BlueprintTable extends Interactable {
     
   public BlueprintTable(Node interactable){
-    super(interactable);  
+    super(interactable);
+    name       = "BlueprintTable";
+    message    = "An ancient table";
+    actionName = "Check";
     }
   
   @Override
@@ -29,21 +32,25 @@ public class BlueprintTable extends Interactable {
     
     Quest eldaQuest = player.questList.getQuest("EldaQuest");
     
+      System.out.println("Blueprint table acting");
+    
     if (eldaQuest ==  null) {
       eldaQuest = new EldaQuest(stateManager);
       player.questList.add(eldaQuest);
       eldaQuest.step = "Start";
+      System.out.println("Creating Elda Quest");
       }
     
+      System.out.println(eldaQuest.step);
+    
     if (eldaQuest.step.equals("FindBluePrints")) {
-      stateManager.getState(GuiManager.class).showAlert("Ancient Table", "Among the ancient documents you find what seem to be blueprints...");    
+      stateManager.getState(GuiManager.class).showAlert("BlueprintTable", "Among the ancient documents you find what seem to be blueprints...");    
       eldaQuest.step = "HasBluePrints";
       }
     
     else {
-      stateManager.getState(GuiManager.class).showAlert("Ancient Table", "A bunch of strange ancient documents");  
+      stateManager.getState(GuiManager.class).showAlert("BlueprintTable", "A bunch of strange ancient documents");  
       }
-    
       
     }
     
